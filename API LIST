@@ -1,0 +1,55 @@
+#CREATING A CUSTOMER ID
+curl -u <YOUR_KEY_ID>:<YOUR_KEY_SECRET> \
+-X POST https://api.razorpay.com/v1/customers \
+-H "Content-Type: application/json" \
+-d '{
+  "name":"Gaurav Kumar",
+  "contact":"9123456780",
+  "email":"gaurav.kumar@example.com",
+  "fail_existing":"0",
+  "gstin":"29XAbbA4369J1PA",
+  "notes":{
+    "notes_key_1":"Tea, Earl Grey, Hot",
+    "notes_key_2":"Tea, Earl Grey… decaf."
+  }
+}'
+
+#RESPONSE:
+
+{
+  "id" : "cust_1Aa00000000004",
+  "entity": "customer",
+  "name" : "Gaurav Kumar",
+  "email" : "gaurav.kumar@example.com",
+  "contact" : "9123456789",
+  "gstin": "29XAbbA4369J1PA",
+  "notes":{
+    "notes_key_1":"Tea, Earl Grey, Hot",
+    "notes_key_2":"Tea, Earl Grey… decaf."
+  },
+  "created_at ": 1234567890
+}
+#Edit Customer Details
+
+curl -u <YOUR_KEY_ID>:<YOUR_KEY_SECRET> \
+-X PUT https://api.razorpay.com/v1/customers/cust_1Aa00000000003 \
+-H "Content-Type: application/json" \
+-d '{
+  "name" : "Saurav Kumar",
+  "email" : "saurav.kumar@example.com",
+  "contact" : "9000000000",
+}
+RESPONSE:
+{
+  "id":"cust_1Aa00000000003",
+  "entity":"customer",
+  "name":"Saurav Kumar",
+  "email":"saurav.kumar@example.com",
+  "contact":"9000000000",
+  "gstin":null,
+  "notes":{
+    "notes_key_1":"Tea, Earl Grey, Hot",
+    "notes_key_2":"Tea, Earl Grey… decaf."
+  },
+  "created_at":1582033731
+}
